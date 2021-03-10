@@ -161,16 +161,6 @@ def main():
             if event.type == YELLOW_HIT:
                 yellow_hp -= 1
                 BULLET_HIT_SOUND.play()
-        
-        winner = ''
-        if red_hp  <= 0:
-            winner = 'Yellow Wins!'
-        if yellow_hp <= 0:
-            winner = 'Red Wins!'
-
-        if winner:
-            draw_winner(winner)
-            break
 
         keys_pressed = pygame.key.get_pressed() #checks what keys are being pressed
         yellow_move(keys_pressed, yellow)
@@ -180,6 +170,15 @@ def main():
 
         draw_window(red, yellow, red_bullets, yellow_bullets, red_hp, yellow_hp)
 
+        winner = ''
+        if red_hp  <= 0:
+            winner = 'Yellow Wins!'
+        if yellow_hp <= 0:
+            winner = 'Red Wins!'
+
+        if winner:
+            draw_winner(winner)
+            break
     #quit or restart
     #pygame.quit()
     main()
